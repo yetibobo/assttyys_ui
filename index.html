@@ -15,7 +15,11 @@
 </html>
 
 <!--在HTML中，<script type="module" src="/src/main.ts"></script> 会自动运行，但执行时机受模块加载特性影响。具体表现如下：
-‌模块脚本的默认行为‌
+‌模块脚本的默认行为会自动下载并执行 /src/main.ts 文件是 是模块脚本（加载外部文件）与
+<script>
+document.write("<h1>这是一个标题</h1>");
+document.write("<p>这是一个段落</p>");
+</script>机制不同，这是内联脚本（立即执行 document.write）
 浏览器遇到type="module"的<script>标签时，会按以下流程处理：
 ‌异步下载‌：立即发起网络请求加载/src/main.ts文件5。
 ‌延迟执行‌：默认采用defer行为，即脚本会在HTML文档解析完成后、DOMContentLoaded事件触发前执行25。

@@ -26,7 +26,6 @@ onMounted(async () => {
     </div>
 </template>
 
-// 作用域样式（当前为空）
-<style scoped></style>
-// 全局样式（当前为空）
-<style></style>
+
+<style scoped>/* 这是一个作用域样式注释当前为空 */</style>
+<style>/* 全局样式为空*/</style>

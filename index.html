@@ -13,3 +13,18 @@
 </body>
 
 </html>
+
+<!--在HTML中，<script type="module" src="/src/main.ts"></script> 会自动运行，但执行时机受模块加载特性影响。具体表现如下：
+‌模块脚本的默认行为‌
+浏览器遇到type="module"的<script>标签时，会按以下流程处理：
+‌异步下载‌：立即发起网络请求加载/src/main.ts文件5。
+‌延迟执行‌：默认采用defer行为，即脚本会在HTML文档解析完成后、DOMContentLoaded事件触发前执行25。
+‌严格模式‌：模块内代码自动启用严格模式（"use strict"）35。
+‌执行顺序控制‌
+若需立即执行（如初始化页面组件），需显式添加async属性：
+<script type="module" async src="/src/main.ts"></script>
+此时模块下载完成后立即执行，但执行顺序不确定（与普通async脚本相同）25。
+‌注意事项‌
+‌路径问题‌：/src/main.ts表示从域名根目录加载，需确保服务器配置正确6。
+‌TS编译‌：浏览器无法直接执行TypeScript，需预编译为JavaScript或使用支持TS的运行时（如Vite）4。
+总结：未添加async时，模块脚本会延迟执行但保证DOM就绪；添加async则可能更早执行但顺序不可控 -->

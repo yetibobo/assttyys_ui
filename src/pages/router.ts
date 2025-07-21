@@ -1,14 +1,17 @@
+// 导入 Vue Router 的创建方法和路由组件
+// 使用 Hash 模式的路由历史记录和创建路由方法:
 import { createWebHashHistory, createRouter } from 'vue-router';
-import SchemeManagementPage from './SchemeManagementPage.vue';
-import FunctionManagementPage from './FunctionManagementPage.vue';
-import SettingsPage from './SettingsPage.vue';
-import SchedulerPage from './SchedulerPage.vue';
-import OauthGithub from './OauthGithub.vue';
-import Home from './Home.vue';
 
+import SchemeManagementPage from './SchemeManagementPage.vue';  // 导入方案管理页面组件
+import FunctionManagementPage from './FunctionManagementPage.vue';  // 导入功能管理页面组件
+import SettingsPage from './SettingsPage.vue';  // 导入设置页面组件
+import SchedulerPage from './SchedulerPage.vue';  // 导入定时任务页面组件
+import OauthGithub from './OauthGithub.vue';  //导入 GitHub OAuth 认证页面组件
+import Home from './Home.vue';  // 导入首页组件
 
+// 定义路由规则数组
 const routes = [
-    { name: 'Home', path: '/', component: Home },
+    { name: 'Home', path: '/', component: Home },   // 根路径映射到首页组件
     { name: 'SchemeManagementPage', path: '/SchemeManagementPage', component: SchemeManagementPage },
     { name: 'FunctionManagementPage', path: '/FunctionManagementPage', component: FunctionManagementPage },
     { name: 'SettingPage', path: '/SettingPage', component: SettingsPage },
@@ -16,11 +19,13 @@ const routes = [
     { name: 'OAuth', path: '/OAuth', component: OauthGithub },
 ];
 
+// 创建路由实例
 const router = createRouter({
     history: createWebHashHistory(),
     routes,
 });
 
+// 定义路由菜单配置(用于导航显示)
 const routesDefine = [
     // { name: 'ASSTTYYS' },
     { name: '方案管理', path: '/SchemeManagementPage' },

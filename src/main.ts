@@ -14,11 +14,16 @@ import { AutoWeb } from './tools/AutoWeb'; // 自定义工具类
 const app = createApp(App);
 
 // 配置ElementPlus组件库（含中文支持）
+// app.use 是 Vue 框架的运行时 API
+// 主要用于安装插件（如 Vue Router、Vuex）或扩展全局功能
+// app.use()安装一个插件。
+
+// ---社区插件ElementPlus
 app.use(ElementPlus, {
     locale: zhCn,
 });
 
-// 挂载路由系统
+// 挂载路由系统---官方插件Vue-Router
 app.use(router);  // pages/router.ts
 app.config.performance = true;  // 开启性能追踪（生产环境建议关闭）
 

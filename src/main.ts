@@ -18,12 +18,12 @@ const app = createApp(App);
 // 主要用于安装插件（如 Vue Router、Vuex）或扩展全局功能
 // app.use()安装一个插件。
 
-// ---社区插件ElementPlus
+// ---社区插件ElementPlus 详见https://cn.element-plus.org/zh-CN/
 app.use(ElementPlus, {
     locale: zhCn,
 });
 
-// 挂载路由系统---官方插件Vue-Router
+// 挂载路由系统---官方插件Vue-Router 详见https://router.vuejs.org/zh/
 app.use(router);  // pages/router.ts
 app.config.performance = true;  // 开启性能追踪（生产环境建议关闭）
 
@@ -31,6 +31,19 @@ app.config.performance = true;  // 开启性能追踪（生产环境建议关闭
 app.mount('#app');
 
 // 扩展Window类型声明（TypeScript全局补丁）
+// 这段代码通过 TypeScript 的 declare global 扩展了全局 Window 接口，向浏览器环境添加了四个自定义属性/方法：
+// ‌routeBack: () => void‌
+// 声明了一个无返回值、可调用的函数方法，通常用于实现页面回退逻辑（如返回上一页或历史记录）‌
+// ‌routeBackFlag: boolean‌
+// 声明了一个布尔值属性，可能用于标记是否允许回退操作的状态‌
+// ‌loadScheduleData: Function‌
+// 声明了一个函数方法，可能用于异步加载调度数据（如定时任务或计划表）‌
+// ‌resumeValidUser: Function‌
+// 声明了一个函数方法，可能用于恢复用户会话有效性（如重新验证登录状态
+
+//*推荐优先用 declare global‌：扩展 Window 等全局对象时更直观、类型安全，
+// 而extend 更适合继承类型‌：如自定义类扩展原生类型时使用‌.无法直接扩展 Window 这类全局对象,对复杂方法（如函数链式调用）支持较弱
+
 declare global {
     interface Window {
         routeBack: () => void; // 返回方法

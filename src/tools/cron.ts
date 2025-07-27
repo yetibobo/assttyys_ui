@@ -1,4 +1,7 @@
 // 乞丐版验证CRON表达式方法，不支持L与/操作符  计划任务的时间计算
+// 实现了一个简化版的 CRON 表达式解析和计算工具，主要用于调度系统中计算任务的下次执行时间。
+
+//checkedDateByCron 函数用于验证给定时间是否符合 CRON 表达式规则
 export function checkedDateByCron(cronData: string, nowDate = new Date()) {
 	cronData = cronData.trim();
 	const _cronArray = cronData.split(/\s+/);
@@ -38,6 +41,7 @@ export function checkedDateByCron(cronData: string, nowDate = new Date()) {
 }
 
 // 缺陷版根据当前时间获取cron表达式的下一次符合规则的时间
+// getNextByCron 函数是核心功能，根据 CRON 表达式计算下一次符合条件的执行时间
 export function getNextByCron(cronData: string, nowDate = new Date(), _runCount = 1): Date {
 	const _originalDate = new Date(nowDate.toString());
 	// console.log('--date--次数:', _runCount, '时间为:', nowDate);

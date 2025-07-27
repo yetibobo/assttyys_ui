@@ -1,4 +1,4 @@
-// 乞丐版验证CRON表达式方法，不支持L与/操作符
+// 乞丐版验证CRON表达式方法，不支持L与/操作符  计划任务的时间计算
 export function checkedDateByCron(cronData: string, nowDate = new Date()) {
 	cronData = cronData.trim();
 	const _cronArray = cronData.split(/\s+/);

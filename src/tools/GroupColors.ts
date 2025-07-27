@@ -1,3 +1,7 @@
+// 这个文件被 tools.ts 中的 getGroupColor 函数使用：
+// getGroupColor 函数通过计算分组名称的字符编码总和，
+// 然后对颜色数组长度取模，为每个分组分配一个固定的颜色。
+// 这确保了相同名称的分组总是显示相同的颜色。
 export default [
     '',
     "#cd4ae3",

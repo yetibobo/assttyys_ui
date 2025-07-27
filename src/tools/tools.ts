@@ -1,3 +1,45 @@
+// 这是一个综合性的工具函数库，主要实现以下几大类功能：
+
+// 1. 唯一标识符生成 tools.ts:7-12
+// uuid 函数使用浏览器的 URL.createObjectURL API 生成唯一标识符，这在 AutoWeb 通信系统中用于创建唯一的事件回调ID。
+
+// 2. 方案分组管理 tools.ts:14-31
+// groupSchemeList 函数将方案列表按分组名称进行组织，这是方案管理页面的核心数据处理逻辑。 tools.ts:33-41
+// groupedSchemeListToGroupSchemeNames 函数执行相反的转换，将分组后的方案列表转换回分组名称结构。
+
+// 3. 深度操作工具 tools.ts:44-57
+// deepClone 函数实现对象的深度克隆，在函数配置管理中被广泛使用。 tools.ts:59-90
+// deepEqual 函数实现深度比较，用于检测配置变化。
+
+// 4. 性能优化工具 tools.ts:93-104
+// debounce 防抖函数，用于优化频繁触发的事件处理。 tools.ts:106-127
+// throttle 节流函数，用于控制事件触发频率。
+
+// 5. 颜色分配系统 tools.ts:129-136
+// getGroupColor 函数通过哈希算法为分组分配一致的颜色，这在方案管理界面中被使用： SchemeManagementPage.vue:316
+
+// 6. DOM 操作工具 tools.ts:138-150
+// getAncestorBySelector 函数用于查找匹配选择器的祖先元素，在 FixedCollapse 组件中被使用： FixedCollapse.vue:4
+
+// 7. 时间处理工具 tools.ts:152-154
+// random 函数生成指定范围的随机数。 tools.ts:156-172
+// mergeOffsetTime 函数为日期添加随机偏移时间，在调度系统中被使用： SchedulerPage.vue:10 tools.ts:175-192
+// toStdFormatDateStr 函数将日期格式化为标准字符串格式。 tools.ts:275-307
+// bueatifyTime 函数将时间差转换为人性化的描述，在调度页面中被使用： SchedulerPage.vue:10
+
+// 8. 配置管理工具 tools.ts:209-218
+// getCommonConfig 函数获取公共配置的默认值。 tools.ts:220-272
+// simplifySchemeList 函数通过移除默认配置来简化方案数据，用于导出功能。
+
+// 在项目中的使用
+// 这个工具库在整个项目中被广泛使用：
+// 函数配置页面：使用 deepClone 和 throttle 等工具 FunctionManagementPage.vue:7
+// 方案管理页面：使用分组管理和颜色分配功能 SchemeManagementPage.vue:9
+// 方案卡片组件：使用深度克隆功能 SchemeItemCard.vue:10
+// AutoWeb 通信：使用 UUID 生成功能 AutoWeb.ts:4
+// Notes
+// src/tools/tools.ts 是整个项目的基础工具库，提供了从数据处理、性能优化到UI辅助的全方位功能支持。它是项目架构中不可或缺的核心组件，几乎被所有主要页面和组件所依赖。
+
 import { AutoWeb } from "./AutoWeb";
 import type { Func, FuncConfig, GroupSchemeName, Scheme } from "./declares";
 import groupColors from "./GroupColors";

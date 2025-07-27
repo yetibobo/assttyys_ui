@@ -130,9 +130,9 @@ export const getGroupColor = (groupName: string): string => {
     // 计算hash值
     let sum = 0;
     for (let i = 0; i < groupName.length; i++) {
-        sum += groupName.charCodeAt(i);
+        sum += groupName.charCodeAt(i);  // 1.把组名每个字符的unicode值相加，比如组名叫"三进三出"
     }
-    return groupColors[sum % groupColors.length];
+    return groupColors[sum % groupColors.length];  //把unicode值总和对颜色值求余数，共有503种颜色
 }
 
 export const getAncestorBySelector = (element: HTMLElement, selector: string): HTMLElement => {
